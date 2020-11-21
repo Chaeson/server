@@ -59,6 +59,24 @@
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!-- MongoDB Connection을 위한 maven dependency 추가 -->
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongo-java-driver</artifactId>
+        </dependency>
+
+        <!-- MongoDB Spring Batch 처리를 위한 dependency 추가 -->
+        <!--Dependency for Spring Batch-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-batch</artifactId>
+        </dependency>
+        <!--Dependency for Spring MongoDB Driver-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
+        <!-- 참고: https://www.tutorialsbuddy.com/spring-batch-with-mongodb-example -->
     </dependencies>
 
     <build>
