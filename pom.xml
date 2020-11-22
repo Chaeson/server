@@ -60,21 +60,28 @@
             <scope>test</scope>
         </dependency>
         <!-- MongoDB Connection을 위한 maven dependency 추가 -->
-        <dependency>
-            <groupId>org.mongodb</groupId>
-            <artifactId>mongo-java-driver</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.mongodb</groupId>-->
+<!--            <artifactId>mongo-java-driver</artifactId>-->
+<!--        </dependency>-->
 
         <!-- MongoDB Spring Batch 처리를 위한 dependency 추가 -->
-        <!--Dependency for Spring Batch-->
+        <!-- Dependency for Spring Batch -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-batch</artifactId>
         </dependency>
-        <!--Dependency for Spring MongoDB Driver-->
+        <!-- Dependency for Spring MongoDB Driver-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.200</version>
+            <scope>runtime</scope>
         </dependency>
         <!-- 참고: https://www.tutorialsbuddy.com/spring-batch-with-mongodb-example -->
     </dependencies>

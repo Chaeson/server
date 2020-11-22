@@ -20,7 +20,7 @@ public class DBconfig {
         // MongoDB Connection Info.
         // MongoDB Atlas 설정한 정보로 데이터를 세팅한다.
         ConnectionString connString = new ConnectionString(
-                "mongodb+srv://chae:4879@cluster0.aolss.mongodb.net/TestDB?retryWrites=true&w=majority"
+                "mongodb+srv://chae:4879@cluster0.aolss.mongodb.net/sample_supplies?retryWrites=true&w=majority"
         );
 
         // MongoDB API 참조값
@@ -33,14 +33,14 @@ public class DBconfig {
         // Cluster 에서 세팅한 DataBase 명
         // 없는 경우 샘플 데이터를 만들 수 있다.
         // RDBMS 의 스키마와 비슷한 개념으로 보임...
-        MongoDatabase database = mongoClient.getDatabase("TestDB");
+        MongoDatabase database = mongoClient.getDatabase("sample_supplies");
 
         // Collection 명을 설정
         // RDBMS의 테이블? 과 비슷한 개념으로 보인다.
-        logger.info("MongoDB Name:{}",database.getCollection("TestCol"));
+        logger.info("MongoDB Name:{}",database.getCollection("sales"));
 
-        logger.info("MongoDB Count:{}",database.getCollection("TestCol").countDocuments());
-        logger.info("MongoDB Find:{}",database.getCollection("TestCol").find().first());
+        logger.info("MongoDB Count:{}",database.getCollection("sales").countDocuments());
+        logger.info("MongoDB Find:{}",database.getCollection("sales").find().first());
 
         // MongoDB Insert
         // Document 세팅
@@ -58,11 +58,11 @@ public class DBconfig {
         // Collection Insert
         // database.getCollection("TestCol").insertOne(document);
 
-        logger.info("MongoDB Insert after count:{}",database.getCollection("TestCol").countDocuments());
+        logger.info("MongoDB Insert after count:{}",database.getCollection("sales").countDocuments());
 
         // MongoDB Select
         ClientSession clientSession = mongoClient.startSession();
-        MongoCollection collection =  database.getCollection("TestCol");
+        MongoCollection collection =  database.getCollection("sales");
 
         // Select All in a Row
         collection.find().forEach(document1 -> {
@@ -71,12 +71,12 @@ public class DBconfig {
 
         // 찾을 조건을 선택한다.
         // Document 의 TestInt 키가 1인 데이터를 찾는다.
-        FindIterable<Document> iterable = collection.find( new Document("TestInt", 1));
+        FindIterable<Document> iterable = collection.find( new Document("storeLocation", "San Diego"));
 
         // TestInt가 1인 데이터의 로우
         logger.info("MongoDB Find Result:{}",iterable.first());
         // TestInt의 데이터가 1인 데이터의 시간 키값.
-        logger.info("MongoDB Find Result:{}",iterable.first().get("testDate"));
+        logger.info("MongoDB Find Result:{}",iterable.first().get("storeLocation"));
 
     }
 
