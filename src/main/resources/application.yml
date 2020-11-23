@@ -4,11 +4,9 @@
 spring:
   data:
     mongodb:
-      host: mongodb+srv://chae:4879@cluster0.aolss.mongodb.net/sample_supplies?retryWrites=true&w=majority
-      port: 27017
-      database: sample_supplies
-      username: chae
-      password: 4879
+      # DB 관련 정보는 '{}'로 묶어 놓음.
+      uri: mongodb+srv://{ID}:{password}@{Cluster Name}.aolss.mongodb.net/{DB Name}?retryWrites=true&w=majority
+      database: {DB Name}
   profiles:
     active: mongoDB
   datasource:

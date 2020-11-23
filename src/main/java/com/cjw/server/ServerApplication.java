@@ -1,5 +1,6 @@
 package com.cjw.server;
 
+import com.cjw.server.repository.SalesRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +13,14 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 
 // Default exclude Setting
 // If not setting this value, Spring Boot try Connect 'localhost'
-@SpringBootApplication(exclude = {MongoAutoConfiguration.class, MongoDataAutoConfiguration.class})
+@SpringBootApplication// (exclude = {MongoAutoConfiguration.class, MongoDataAutoConfiguration.class})
 // Batch 기능 활성화
+@EnableBatchProcessing
 // 참고: https://jojoldu.tistory.com/325
 @Slf4j
-public class ServerApplication {
+public class ServerApplication{
+
     public static void main(String[] args) {
         SpringApplication.run(ServerApplication.class, args);
     }
-
 }
