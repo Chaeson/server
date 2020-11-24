@@ -1,5 +1,6 @@
 package com.cjw.server.model;
 
+import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -9,6 +10,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 @Document("sales")
+@Data
 public class SalesModel {
     @Id
     private String _id;
