@@ -3,13 +3,17 @@ package com.cjw.server.processor;
 import com.cjw.server.model.SalesModel;
 import com.cjw.server.repository.SalesRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
+@EnableBatchProcessing
+@Transactional
 public class SalesProcessor implements ItemProcessor<SalesModel, SalesModel> {
 
     @Autowired
@@ -17,15 +21,11 @@ public class SalesProcessor implements ItemProcessor<SalesModel, SalesModel> {
 
     @Override
     public SalesModel process(final SalesModel salesModel) throws Exception {
-        List<SalesModel> salesList = salesRepository.findAll();
-        for(SalesModel model : salesList){
-            log.info("model:{}",model.toString());
-            if(model.getStoreLocation().equalsIgnoreCase("san diego")) {
-                model.setStoreLocation(model.getStoreLocation().toUpperCase());
-                log.info("process Model::{}",model.toString());
-            }
-            return model;
+        SalesModel processedSalesModel = new SalesModel();
+        if(salesModel.getStoreLocation().equalsIgnoreCase("san diego")){
+            processedSalesModel.setStoreLocation(salesModel.getStoreLocation().toUpperCase());
         }
-        return null;
+        return processedSalesModel;
     }
+
 }
