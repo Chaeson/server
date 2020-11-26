@@ -5,9 +5,11 @@ import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.NonTransientResourceException;
 import org.springframework.batch.item.ParseException;
 import org.springframework.batch.item.UnexpectedInputException;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class SalesReader implements ItemReader<List<SalesModel>> {
     @Override
     public List<SalesModel> read() throws Exception, UnexpectedInputException, ParseException, NonTransientResourceException {

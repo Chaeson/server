@@ -23,6 +23,7 @@ public class SalesProcessor implements ItemProcessor<SalesModel, SalesModel> {
     public SalesModel process(final SalesModel salesModel) throws Exception {
         SalesModel processedSalesModel = new SalesModel();
         if(salesModel.getStoreLocation().equalsIgnoreCase("san diego")){
+            processedSalesModel = salesModel;
             processedSalesModel.setStoreLocation(salesModel.getStoreLocation().toUpperCase());
         }
         return processedSalesModel;

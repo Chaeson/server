@@ -5,8 +5,8 @@ spring:
   data:
     mongodb:
       # DB 관련 정보는 '{}'로 묶어 놓음.
-      uri: mongodb+srv://{ID}:{password}@{Cluster Name}.aolss.mongodb.net/{DB Name}?retryWrites=true&w=majority
-      database: {DB Name}
+      uri: mongodb+srv://chae:4879@cluster0.aolss.mongodb.net/sample_supplies?retryWrites=true&w=majority
+      database: sample_supplies
   profiles:
     active: mongoDB
   datasource:
