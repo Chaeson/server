@@ -22,10 +22,11 @@ public class SalesProcessor implements ItemProcessor<SalesModel, SalesModel> {
     @Override
     public SalesModel process(final SalesModel salesModel) throws Exception {
         SalesModel processedSalesModel = new SalesModel();
-        if(salesModel.getStoreLocation().equalsIgnoreCase("san diego")){
-            processedSalesModel = salesModel;
-            processedSalesModel.setStoreLocation(salesModel.getStoreLocation().toUpperCase());
-        }
+        processedSalesModel = salesModel;
+        String [] customer = new String[2];
+        customer[0]="Chae";
+        customer[1]="Chae2";
+        processedSalesModel.setCustomer(customer);
         return processedSalesModel;
     }
 

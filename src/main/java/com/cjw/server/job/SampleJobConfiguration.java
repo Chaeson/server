@@ -64,7 +64,9 @@ public class SampleJobConfiguration {
         mongoItemReader.setCollection("sales");
         mongoItemReader.setTargetType(SalesModel.class);
         mongoItemReader.setPageSize(10);
-        mongoItemReader.setQuery("{\"storeLocation\":\"San Diego\"}");
+        // mongoItemReader.setQuery("{\"storeLocation\":\"San Diego\"}");       //-- storeLocation이 San Diego인 것들만
+        // storeLocation이 SAN DIEGO이고 items의 이름이 envelopes인 대상자.
+        mongoItemReader.setQuery("{$and:[{'items.name':'envelopes'},{'storeLocation':'SAN DIEGO'}]}");
         Map<String, Sort.Direction> sort = new HashMap<String, Sort.Direction>(1);
         sort.put("_id",Sort.Direction.ASC);
         mongoItemReader.setSort(sort);
