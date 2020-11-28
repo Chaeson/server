@@ -25,7 +25,5 @@ public class SalesWriter implements ItemWriter<SalesModel> {
             log.info("list::{}",list.get(i));
             salesRepository.save(list.get(i));
         }
-
-        //salesRepository.saveAll(list);
     }
 }
